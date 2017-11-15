@@ -1,6 +1,6 @@
 import React from 'react';
 import { aframe } from 'aframe'; /* linter pls shut up */
-
+/*https://medium.com/@mackplevine/node-js-get-pixels-getting-pixels-at-specific-sectors-of-an-image-using-ndarray-e6d4cb285d36*/
 const CoolBoxesCollection = () => {
   const coolBoxArray = [
     {
