@@ -7,20 +7,20 @@ const CoolBoxesCollection = () => {
       position:"-.45 .15 -1",
         rotation:"0 0 0",
         width:".2", height:".2", depth:".2",
-        color:"#cc3333",
+        color:"#FFCFAA",
     },
     {
       position:".60 .15 -1",
         rotation:"0 0 0",
         width:".2", height:".2", depth:".2",
-        color:"#33cc33"
+        color:"#FFCFAA"
 
     },
     {
       position:".120 .15 -1",
         rotation:"0 0 0",
         width:".2", height:".2", depth:".2",
-        color:"#33cc33"
+        color:"#552500"
 
     }
   ];
@@ -44,8 +44,11 @@ export default () => {
   return (
     <a-scene>
       <a-entity camera position="0 .7 0" look-controls wasd-controls universal-controls />
-        <a-sky color="#01E5FE"></a-sky>
+      <a-light type="point" color="#92D18B" position="0 5 5"></a-light>
+
+        <a-sky color="#2D4471"></a-sky>
         <a-plane
+          fog="true"
           rotation="-90 0 0"
           color="#ccff99"
           height="40"
