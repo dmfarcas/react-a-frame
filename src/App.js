@@ -1,7 +1,10 @@
 import React from 'react';
-import { aframe } from 'aframe'; /* linter pls shut up */
-import { aframeParticleSystemComponent }  from 'aframe-particle-system-component';
-import { aframeAudioAnalyserComponent } from 'aframe-audioanalyser-component';
+import 'aframe'; /* linter pls shut up */
+import 'aframe-particle-system-component';
+import 'aframe-audioanalyser-component';
+
+import pusheen from './assets/pusheen.png'
+import trashparrot from './assets/trashparrot.png'
 
 import snow from './assets/snow.jpg';
 import sound from './assets/Plushgoolash_-_03_-_Big_Gay_Water_Fight.mp3';
@@ -45,7 +48,7 @@ const CoolBoxesCollection = () => panda.map((x, xIndex) => x.map((y, yIndex) => 
       depth={2}
       color={y}
     >
-    <a-animation attribute="material.width" begin="0.99" to="0" dur="1000"></a-animation>
+    {(y === "red" || y === "grey") && <a-animation attribute="position" repeat="indefinite" from={`${yIndex} ${xIndex} -12`} to={`${yIndex} ${xIndex} ${-12 + (yIndex/100)}`} dur={500} direction="alternate"></a-animation>}
 
     </a-box>
 )));
@@ -55,16 +58,15 @@ export default () => {
     <a-scene>
       <a-assets>
          <img crossOrigin="true" id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg" />
-         <audio crossOrigin="true" id="song" autoPlay loop src={sound}></audio>
       </a-assets>
 
       <a-entity position="0 2.25 -15" particle-system="preset: snow; particleCount: 5000; size: 0.5; maxAge: 2"></a-entity>
-      <a-entity camera position="17 10 4" look-controls wasd-controls universal-controls />
-      <a-light type="point" color="#fff" position="0 5 5"></a-light>
-
+      <a-entity camera position="17 10 20" look-controls wasd-controls universal-controls />
+      <a-light type="point" color="#fff" position="10 10 3"></a-light>
+      <a-entity geometry="primitive: plane; height: 20; width: 20" position="-50 10 -50" material={`shader: standard; transparent: true; side: double; src: url(${pusheen})`}></a-entity>
+      <a-entity geometry="primitive: plane; height: 20; width: 20" position="100 10 100" material={`shader: standard; transparent: true; side: double; src: url(${trashparrot})`}></a-entity>
       <a-entity geometry="primitive: plane; height: 750; width: 750" position="0 -0.5 0" rotation="-90 0 0" material={`shader: flat; src: url(${snow}); repeat: 300 300`}></a-entity>
       <a-sky color="#bcd1e5"></a-sky>
-
       <CoolBoxesCollection />
    </a-scene>
   );
